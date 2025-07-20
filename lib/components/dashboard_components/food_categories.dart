@@ -1,6 +1,8 @@
 import 'package:f_logistics/util/vh_spacing.dart';
 import 'package:flutter/material.dart';
 
+import '../app_components/custom_text.dart';
+
 class FoodCategories extends StatelessWidget {
   final String imagePath;
   final String title;
@@ -23,17 +25,17 @@ class FoodCategories extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
       Image.asset(imagePath, width: imageSize, height: imageSize, fit: BoxFit.contain),
-        VerticalSpacing(5),
-        Text(
-          title,
-          style: titleStyle ?? Theme.of(context).textTheme.titleMedium,
+        VerticalSpacing(1),
+        CustomText(
+          text:title,
+          styleName: 'bodySmall',
           textAlign: TextAlign.center,
         ),
         if (subtitle != null) ...[
-          SizedBox(height: spacing / 2),
-          Text(
-            subtitle!,
-            style: subtitleStyle ?? Theme.of(context).textTheme.bodySmall,
+          VerticalSpacing(1),
+          CustomText(
+            text:subtitle!,
+            styleName: 'bodySmall',
             textAlign: TextAlign.center,
           ),
         ],
