@@ -1,3 +1,5 @@
+import 'package:f_logistics/util/themes.dart';
+import 'package:f_logistics/util/vh_spacing.dart';
 import 'package:flutter/material.dart';
 
 class WhatsNewCard extends StatelessWidget {
@@ -17,15 +19,18 @@ class WhatsNewCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(12),
       child: Stack(
         children: [
           // Background Image
-          Image.asset(
-            backgroundImageUrl,
-            width: double.infinity,
-            height: 200,
-            fit: BoxFit.cover,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image.asset(
+              backgroundImageUrl,
+              width: double.infinity,
+              height: 200,
+              fit: BoxFit.cover,
+            ),
           ),
 
           // Shop Logo in Top-Left
@@ -45,16 +50,16 @@ class WhatsNewCard extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.6),
+                color: AppTheme.greenLight,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Row(
                 children: [
                   const Icon(Icons.star, color: Colors.yellow, size: 18),
-                  const SizedBox(width: 4),
+                  HorizontalSpacing(1),
                   Text(
                     '$rating ($ratingCount)',
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: AppTheme.bpBlack),
                   ),
                 ],
               ),

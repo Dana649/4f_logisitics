@@ -1,11 +1,12 @@
 import 'package:f_logistics/pages/dashboard_pages/account.dart';
+import 'package:f_logistics/pages/dashboard_pages/home_pages/categories_detailed_page.dart';
 import 'package:f_logistics/pages/dashboard_pages/orders.dart';
 import 'package:f_logistics/pages/login_pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../main_scaffold.dart';
-import '../pages/dashboard_pages/home_page.dart';
+import '../pages/dashboard_pages/home_pages/home_page.dart';
 import '../pages/loading/loading_screen.dart';
 import '../pages/onboarding_pages/onboarding_page.dart';
 import '../pages/onboarding_pages/splash_screen.dart';
@@ -24,11 +25,11 @@ enum AppRoute {
   profile,
   payments,
   cryptoPayment,
-  bankCardPayment
+  bankCardPayment,
+  categoriesDetailed
 }
 class AppNavigator {
   static void navigatePushTo(BuildContext context, String routeName, {Object? extra}) {
-    Navigator.of(context).pop();
     Future.microtask(() {
       if (!context.mounted) return;
       GoRouter.of(context).pushNamed(routeName, extra: extra);
@@ -36,6 +37,21 @@ class AppNavigator {
   }
 
   static void navigateGoTo(BuildContext context, String routeName, {Object? extra}) {
+    Future.microtask(() {
+      if (!context.mounted) return;
+      GoRouter.of(context).goNamed(routeName, extra: extra);
+    });
+  }
+
+  static void navigatePopPushTo(BuildContext context, String routeName, {Object? extra}) {
+    Navigator.of(context).pop();
+    Future.microtask(() {
+      if (!context.mounted) return;
+      GoRouter.of(context).pushNamed(routeName, extra: extra);
+    });
+  }
+
+  static void navigatePopGoTo(BuildContext context, String routeName, {Object? extra}) {
     Navigator.of(context).pop();
     Future.microtask(() {
       if (!context.mounted) return;
@@ -109,6 +125,14 @@ GoRouter goRouter() {
             pageBuilder: (context, state) =>
             const NoTransitionPage(child: AccountPage()),
           ),
+          GoRoute(
+            path: '/categoriesDetailed',
+            name: AppRoute.categoriesDetailed.name,
+            pageBuilder: (context, state) {
+              final headerTitle = state.extra as String;
+
+              return  NoTransitionPage(child: CategoriesDetailedPage(headerTitle: headerTitle));}),
+
         ],
       ),
     ],

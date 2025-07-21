@@ -62,14 +62,14 @@ class _SideMenuState extends State<SideMenu> {
           children: [
             Expanded(
               child: SideMenuTab(texts:[TextConst.menuAccounts.tr(),] ,onTap: (){
-                AppNavigator.navigatePushTo(context,AppRoute.payments.name);
+                AppNavigator.navigatePopPushTo(context,AppRoute.payments.name);
               }, icons: [Icons.safety_check ],
                 trailingIcons:[Icons.add],isHorizontal:false,),
             ),
             HorizontalSpacing(2),
             Expanded(
               child: SideMenuTab(texts:[TextConst.menuAccounts.tr(),] ,onTap: (){
-                AppNavigator.navigatePushTo(context,AppRoute.profile.name);
+                AppNavigator.navigatePopPushTo(context,AppRoute.profile.name);
               }, icons: [Icons.safety_check ],
                 trailingIcons:[Icons.add],isHorizontal:false,),
             ),

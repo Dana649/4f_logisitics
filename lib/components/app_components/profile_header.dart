@@ -105,45 +105,49 @@ class _ProfileHeaderState extends State<ProfileHeader> {
           ),
           HorizontalSpacing(4),
 
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomText(
-                text: TextConst.profileHeaderDeliverTo.tr(),
-                styleName:'headlineSmall',
-                color: AppTheme.greyText,
-              ),
-              SizedBox(
-                height: 48,
-                width:context.screenHeight*0.2,
-                child: DropdownButtonFormField<String>(
-                  value: _selectedLocation,
-                  style: Theme.of(context).textTheme.bodySmall,
-                  decoration: InputDecoration(
-                    fillColor: AppTheme.bpWhite,
-                    filled: true
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomText(
+              text: 'Deliver To',
+              styleName: 'headlineSmall',
+              color: AppTheme.greyText,
+            ),
+            const SizedBox(height: 6),
+            SizedBox(
+              width: 200, // <-- Provide fixed width or use context.screenWidth * 0.4
+              child: DropdownButtonFormField<String>(
+                value: _selectedLocation,
+                style: Theme.of(context).textTheme.bodySmall,
+                decoration: InputDecoration(
+                  fillColor: AppTheme.bpWhite,
+                  filled: true,
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  isDense: true,
-                  icon: Icon(Icons.keyboard_arrow_down,color: AppTheme.primaryGreen,),
-                  items: options
-                      .map((item) => DropdownMenuItem<String>(
-                    value: item,
-                    child: Text(item),
-                  ))
-                      .toList(),
-                  onChanged: (value) {
-                    setState(() {
-                      _selectedLocation = value;
-                    });
-                  },
                 ),
+                isDense: true,
+                icon: Icon(Icons.keyboard_arrow_down, color: AppTheme.primaryGreen),
+                items: options
+                    .map((item) => DropdownMenuItem<String>(
+                  value: item,
+                  child: Text(item),
+                ))
+                    .toList(),
+                onChanged: (value) {
+                  setState(() {
+                    _selectedLocation = value;
+                  });
+                },
               ),
+            ),
+          ],
+        ),
 
-            ],
-          ),
 
 
-          const Spacer(),
+        const Spacer(),
 
           // Notification and Cart Icons
           WhiteContainer(child: Icon(Icons.notifications)),

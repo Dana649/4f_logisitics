@@ -12,6 +12,7 @@ class FoodCard extends StatelessWidget {
   final double deliveryFee;
   final bool isFavorite;
   final bool isPromo;
+  final bool isVertical;
 
   const FoodCard({
     super.key,
@@ -22,18 +23,21 @@ class FoodCard extends StatelessWidget {
     required this.reviewCount,
     required this.price,
     required this.deliveryFee,
+    this.isVertical =true,
     this.isPromo = false,
     this.isFavorite = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 200,
-      padding: const EdgeInsets.all(10),
+    return isVertical?
+    Container(
+      width: context.screenWidth *0.45,
+      padding:GloPad.edgeInsets5,
+      margin: GloPad.edgeInsets10,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(BoxDeco.boxRadius),
         boxShadow: [BoxShadow(color: Colors.grey.shade200, blurRadius: 5)],
       ),
       child: Column(
@@ -123,6 +127,92 @@ class FoodCard extends StatelessWidget {
               )
             ],
           ),
+        ],
+      ),
+    ):
+    Container(
+      width: context.screenWidth *0.5,
+      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(BoxDeco.boxRadius),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Stack(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.asset(
+                  imageUrl,
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              if (isPromo)
+                Positioned(
+                  top: 4,
+                  left: 4,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: const Text(
+                      'PROMO',
+                      style: TextStyle(color: Colors.white, fontSize: 10),
+                    ),
+                  ),
+                )
+            ],
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    )),
+                const SizedBox(height: 4),
+                Row(
+                  children: [
+                    Text(
+                      '${(distanceKm * 1000).toInt()} m',
+                      style: const TextStyle(color: Colors.grey, fontSize: 12),
+                    ),
+                    const SizedBox(width: 6),
+                    const Icon(Icons.star, color: Colors.orange, size: 14),
+                    Text(' $rating ', style: const TextStyle(fontWeight: FontWeight.w500)),
+                    Text('($reviewCount)', style: const TextStyle(color: Colors.grey)),
+
+                  ],
+                ),
+                const SizedBox(height: 6),
+                Row(
+                  children: [
+                    const Icon(Icons.delivery_dining, color: Colors.green, size: 16),
+                    const SizedBox(width: 4),
+                    Text('\$${deliveryFee.toStringAsFixed(2)}',
+                        style: const TextStyle(color: Colors.grey)),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 6),
+          Icon(
+            isFavorite ? Icons.favorite : Icons.favorite_border,
+            color: isFavorite ? Colors.red : Colors.grey,
+            size: 20,
+          )
         ],
       ),
     );

@@ -5,10 +5,14 @@ class Assets {
   static const String bottomBarAccount = 'assets/icons/bottom_bar/account.svg';
   static const String bottomBarHome = 'assets/icons/bottom_bar/home.svg';
   static const String bottomBarOrders = 'assets/icons/bottom_bar/orders.svg';
+  static const String homeAd1 = 'assets/images/home/ad1.png';
+  static const String homeAd2 = 'assets/images/home/ad2.png';
   static const String homeBurger = 'assets/images/home/burger.png';
+  static const String homeConstructionItems = 'assets/images/home/construction_items.png';
   static const String homeConstructuinTools = 'assets/images/home/constructuin_tools.png';
   static const String homeDeserts = 'assets/images/home/deserts.png';
   static const String homeDrinks = 'assets/images/home/drinks.png';
+  static const String homeFreshMart = 'assets/images/home/fresh_mart.png';
   static const String homeGroceries = 'assets/images/home/groceries.png';
   static const String homeImages = 'assets/images/home/images.jpeg';
   static const String homeMeat = 'assets/images/home/meat.png';

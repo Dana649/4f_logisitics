@@ -148,6 +148,26 @@ class TextConst{
   static const dashboardMostTradedSymbolsTitle ='Most Traded Symbols';
   static const dashboardNewsTitle ='News';
   static const dashboardSearchTitle ='What are you craving?';
+  static const homeSpecialOffers = 'Special Offers';
+  static const homeSeeAll = 'See all';
+  static const homeCategories = 'Categories';
+  static const homeBurger = 'Burger';
+  static const homePizza = 'Pizza';
+  static const homeMeat = 'Meat';
+  static const homeDeserts = 'Deserts';
+  static const homeGroceries = 'Groceries';
+  static const homeDrinks = 'Drinks';
+  static const homeConstruction = 'Construction';
+  static const homeTools = 'Tools';
+  static const homeRecommendedForYou = 'Recommended for you';
+  static const homeExploreWhatsNew = 'Explore what\'s new';
+  static const homeConstructionSupplies = 'Construction Supplies';
+  static const homeDailyNeeds = 'Daily needs';
+  static const homeExploreGlobalStores = 'Explore Global Stores';
+  static const homeConstructionItems = 'Construction Items';
+  static const homeGrocery = 'Grocery';
+  static const homeFreshMart = 'FreshMart';
+  static const homeMixedSaladBowl = 'Mixed Salad Bowl...';
 
 //Profile Header
   static const profileHeaderDeliverTo='Deliver To';
